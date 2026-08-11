@@ -1,0 +1,2626 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#06111f">
+<title>For Diablo ✦ Happy Birthday</title>
+
+<style>
+
+*{
+    box-sizing:border-box;
+    -webkit-tap-highlight-color:transparent;
+}
+
+html,body{
+    width:100%;
+    height:100%;
+    margin:0;
+    overflow:hidden;
+}
+
+body{
+    font-family:"Segoe UI",Arial,sans-serif;
+    color:#eaf7ff;
+    background:
+        radial-gradient(circle at 50% 25%,
+            #173d65 0%,
+            #0a1d33 35%,
+            #030a14 75%,
+            #01050b 100%);
+}
+
+button,input{
+    font:inherit;
+}
+
+button{
+    cursor:pointer;
+}
+
+.hidden{
+    display:none!important;
+}
+
+/* =========================================================
+   PARTICLES
+========================================================= */
+
+#particles{
+    position:fixed;
+    inset:0;
+    overflow:hidden;
+    pointer-events:none;
+    z-index:9999;
+}
+
+.particle{
+    position:absolute;
+    width:3px;
+    height:3px;
+    border-radius:50%;
+    background:#9ddfff;
+    box-shadow:
+        0 0 6px #73cfff,
+        0 0 14px rgba(73,176,255,.8);
+    animation:particleRise linear forwards;
+}
+
+@keyframes particleRise{
+    0%{
+        transform:translateY(15vh) scale(.3) rotate(0deg);
+        opacity:0;
+    }
+    15%{
+        opacity:.9;
+    }
+    100%{
+        transform:translateY(-120vh) scale(1.2) rotate(180deg);
+        opacity:0;
+    }
+}
+
+/* =========================================================
+   NEW HYDRO / GENSHIN EFFECT LAYER
+========================================================= */
+
+.hydro-drop{
+    position:fixed;
+    width:8px;
+    height:12px;
+    border-radius:70% 30% 70% 30%;
+    background:linear-gradient(135deg,#d9f7ff,#62cfff);
+    box-shadow:
+        0 0 8px #67d5ff,
+        0 0 20px rgba(67,190,255,.8);
+    pointer-events:none;
+    z-index:9997;
+    animation:dropFloat linear forwards;
+}
+
+@keyframes dropFloat{
+    0%{
+        opacity:0;
+        transform:translateY(20px) rotate(0deg) scale(.4);
+    }
+    20%{
+        opacity:.9;
+    }
+    100%{
+        opacity:0;
+        transform:translateY(-150px) rotate(180deg) scale(1);
+    }
+}
+
+.sigillum{
+    position:fixed;
+    width:180px;
+    height:180px;
+    border:1px solid rgba(111,213,255,.22);
+    border-radius:50%;
+    pointer-events:none;
+    z-index:1;
+    animation:sigillumSpin 18s linear infinite;
+}
+
+.sigillum::before,
+.sigillum::after{
+    content:"";
+    position:absolute;
+    inset:18px;
+    border:1px dashed rgba(117,217,255,.18);
+    border-radius:50%;
+}
+
+.sigillum::after{
+    inset:48px;
+    border-style:solid;
+}
+
+@keyframes sigillumSpin{
+    from{
+        transform:rotate(0deg);
+    }
+    to{
+        transform:rotate(360deg);
+    }
+}
+
+.magicStar{
+    position:fixed;
+    pointer-events:none;
+    z-index:9998;
+    color:#d9f7ff;
+    font-size:14px;
+    text-shadow:
+        0 0 8px #63d1ff,
+        0 0 20px #3ea9e8;
+    animation:starBurst 1.2s ease-out forwards;
+}
+
+@keyframes starBurst{
+    0%{
+        opacity:1;
+        transform:translate(-50%,-50%) scale(.2) rotate(0deg);
+    }
+    100%{
+        opacity:0;
+        transform:
+            translate(
+                calc(-50% + var(--dx)),
+                calc(-50% + var(--dy))
+            )
+            scale(1.6)
+            rotate(180deg);
+    }
+}
+
+.energyLine{
+    position:fixed;
+    width:2px;
+    height:80px;
+    background:linear-gradient(
+        to bottom,
+        transparent,
+        #7bdcff,
+        transparent
+    );
+    pointer-events:none;
+    z-index:9997;
+    opacity:.7;
+    animation:energyFall 1.3s ease-out forwards;
+}
+
+@keyframes energyFall{
+    from{
+        opacity:0;
+        transform:translateY(-50px) rotate(var(--rot));
+    }
+    20%{
+        opacity:.8;
+    }
+    to{
+        opacity:0;
+        transform:translateY(150px) rotate(var(--rot));
+    }
+}
+
+/* =========================================================
+   HYDRO CLICK EFFECT
+========================================================= */
+
+.hydro-ring{
+    position:fixed;
+    width:20px;
+    height:20px;
+    border:1px solid rgba(125,215,255,.9);
+    border-radius:50%;
+    pointer-events:none;
+    z-index:9998;
+    animation:hydroRing .9s ease-out forwards;
+}
+
+.hydro-ring::after{
+    content:"";
+    position:absolute;
+    inset:7px;
+    border:1px solid rgba(181,237,255,.8);
+    border-radius:50%;
+}
+
+@keyframes hydroRing{
+    0%{
+        transform:translate(-50%,-50%) scale(.2);
+        opacity:.9;
+    }
+    100%{
+        transform:translate(-50%,-50%) scale(7);
+        opacity:0;
+    }
+}
+
+/* =========================================================
+   BURST
+========================================================= */
+
+.burst{
+    position:fixed;
+    left:50%;
+    top:50%;
+    width:10px;
+    height:10px;
+    border-radius:50%;
+    pointer-events:none;
+    z-index:99999;
+}
+
+.burstPiece{
+    position:absolute;
+    left:0;
+    top:0;
+    width:5px;
+    height:5px;
+    border-radius:50%;
+    background:#9de5ff;
+    box-shadow:0 0 12px #5bcaff;
+    animation:burstPiece 1s ease-out forwards;
+}
+
+@keyframes burstPiece{
+    0%{
+        opacity:1;
+        transform:rotate(var(--angle)) translateX(0) scale(.5);
+    }
+    100%{
+        opacity:0;
+        transform:rotate(var(--angle)) translateX(var(--distance)) scale(1.4);
+    }
+}
+
+/* =========================================================
+   FROST / CAPITANO FINALE
+========================================================= */
+
+.frost{
+    position:fixed;
+    width:6px;
+    height:6px;
+    background:#e7f9ff;
+    box-shadow:
+        0 0 7px #bdeeff,
+        0 0 18px rgba(145,220,255,.9);
+    pointer-events:none;
+    z-index:9998;
+    opacity:0;
+    animation:frostFall linear forwards;
+}
+
+@keyframes frostFall{
+    0%{
+        opacity:0;
+        transform:translateY(-20px) rotate(0deg) scale(.5);
+    }
+    15%{
+        opacity:.9;
+    }
+    100%{
+        opacity:0;
+        transform:translateY(110vh) rotate(300deg) scale(1);
+    }
+}
+
+.finalGlow{
+    position:absolute;
+    inset:0;
+    pointer-events:none;
+    opacity:0;
+    transition:opacity 1.5s ease;
+    background:
+        radial-gradient(
+            circle at 50% 45%,
+            rgba(157,221,255,.16),
+            transparent 35%
+        ),
+        radial-gradient(
+            circle at 50% 45%,
+            rgba(50,121,184,.12),
+            transparent 60%
+        );
+}
+
+#gallery.finalMode .finalGlow{
+    opacity:1;
+}
+
+#gallery.finalMode #galleryImage{
+    animation:
+        finalImageAura 3s ease-in-out infinite alternate;
+}
+
+@keyframes finalImageAura{
+    from{
+        filter:brightness(1) drop-shadow(0 0 12px rgba(100,190,255,.25));
+    }
+    to{
+        filter:brightness(1.08) drop-shadow(0 0 35px rgba(100,190,255,.55));
+    }
+}
+
+/* =========================================================
+   PASSWORD
+========================================================= */
+
+#lockScreen{
+    position:fixed;
+    inset:0;
+    z-index:100000;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    background:
+        radial-gradient(circle at 50% 35%,
+            #173d66,
+            #071321 55%,
+            #01050b 100%);
+
+    transition:opacity .8s ease,visibility .8s ease;
+}
+
+.lockCard{
+    width:min(88vw,390px);
+    padding:32px 28px;
+    text-align:center;
+
+    border:1px solid rgba(124,207,255,.45);
+    border-radius:24px;
+
+    background:rgba(3,12,24,.9);
+
+    backdrop-filter:blur(18px);
+
+    box-shadow:
+        0 30px 100px rgba(0,0,0,.65),
+        0 0 45px rgba(62,160,228,.15);
+}
+
+.lockSymbol{
+    font-size:45px;
+    color:#a9e3ff;
+
+    text-shadow:
+        0 0 15px #54baff,
+        0 0 35px rgba(84,186,255,.6);
+
+    animation:symbolFloat 2.5s ease-in-out infinite;
+}
+
+@keyframes symbolFloat{
+    0%,100%{
+        transform:translateY(0) rotate(0);
+    }
+    50%{
+        transform:translateY(-7px) rotate(8deg);
+    }
+}
+
+.lockCard h1{
+    margin:10px 0 8px;
+    font-size:21px;
+    letter-spacing:2px;
+}
+
+.lockCard p{
+    color:#91acc6;
+    font-size:12px;
+    line-height:1.6;
+}
+
+#password{
+    width:100%;
+    padding:14px;
+
+    border:1px solid #345b7b;
+    border-radius:13px;
+
+    background:#030b16;
+    color:#fff;
+
+    outline:none;
+
+    text-align:center;
+    letter-spacing:7px;
+    font-size:17px;
+}
+
+#password:focus{
+    border-color:#76cfff;
+
+    box-shadow:
+        0 0 20px rgba(79,181,255,.15);
+}
+
+#unlockButton{
+    width:100%;
+    margin-top:13px;
+    padding:14px;
+
+    border:0;
+    border-radius:13px;
+
+    background:
+        linear-gradient(135deg,#8ddcff,#3d7fc0);
+
+    color:#03101b;
+    font-weight:900;
+
+    box-shadow:
+        0 8px 25px rgba(55,151,214,.25);
+
+    transition:transform .2s,box-shadow .2s;
+}
+
+#unlockButton:hover{
+    transform:translateY(-2px);
+    box-shadow:0 12px 30px rgba(55,151,214,.4);
+}
+
+#error{
+    min-height:20px;
+    margin-top:9px;
+    color:#ff9cab;
+    font-size:12px;
+}
+
+.lockHint{
+    font-size:10px!important;
+    color:#66839e!important;
+}
+
+/* =========================================================
+   MAIN APP
+========================================================= */
+
+#app{
+    width:100%;
+    height:100%;
+    position:relative;
+}
+
+/* =========================================================
+   TOP BUTTONS
+========================================================= */
+
+#infoButton,
+#musicButton{
+    position:fixed;
+    top:18px;
+
+    width:45px;
+    height:45px;
+
+    border-radius:50%;
+    border:1px solid rgba(123,207,255,.45);
+
+    background:rgba(4,15,29,.82);
+
+    color:#dff5ff;
+
+    z-index:5000;
+
+    box-shadow:0 8px 25px rgba(0,0,0,.25);
+
+    backdrop-filter:blur(8px);
+
+    transition:
+        transform .2s,
+        box-shadow .2s;
+}
+
+#infoButton:hover,
+#musicButton:hover{
+    transform:scale(1.08);
+    box-shadow:
+        0 0 20px rgba(86,193,255,.35);
+}
+
+#infoButton{
+    left:18px;
+}
+
+#musicButton{
+    right:18px;
+}
+
+#musicLabel{
+    position:fixed;
+    top:33px;
+    right:73px;
+
+    color:#8fc9eb;
+
+    font-size:9px;
+    letter-spacing:1.5px;
+
+    z-index:5000;
+}
+
+#infoPanel{
+    display:none;
+
+    position:fixed;
+
+    left:18px;
+    top:73px;
+
+    width:min(88vw,330px);
+
+    padding:20px;
+
+    border:1px solid rgba(123,207,255,.4);
+    border-radius:18px;
+
+    background:rgba(2,10,20,.96);
+
+    box-shadow:0 20px 70px rgba(0,0,0,.65);
+
+    z-index:5001;
+}
+
+#infoPanel.show{
+    display:block;
+}
+
+#infoPanel h3{
+    margin:0 0 12px;
+    color:#bdeaff;
+}
+
+#infoPanel p{
+    margin:8px 0;
+    color:#9bb9d3;
+    font-size:12px;
+    line-height:1.5;
+}
+
+/* =========================================================
+   ENVELOPE
+========================================================= */
+
+#mainScene{
+    width:100%;
+    height:100%;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    padding:25px;
+}
+
+#envelopeSection{
+    text-align:center;
+    position:relative;
+}
+
+.kicker{
+    margin-bottom:18px;
+
+    color:#86cfff;
+
+    font-size:10px;
+    letter-spacing:5px;
+
+    text-transform:uppercase;
+
+    animation:kickerGlow 2.5s ease-in-out infinite;
+}
+
+@keyframes kickerGlow{
+    0%,100%{
+        opacity:.75;
+        text-shadow:0 0 0 transparent;
+    }
+    50%{
+        opacity:1;
+        text-shadow:0 0 14px rgba(92,201,255,.65);
+    }
+}
+
+.envelope{
+    position:relative;
+
+    width:min(84vw,430px);
+    height:min(55vw,275px);
+
+    min-height:190px;
+
+    cursor:pointer;
+
+    filter:drop-shadow(0 25px 40px rgba(0,0,0,.6));
+
+    animation:envelopeFloat 4s ease-in-out infinite;
+}
+
+@keyframes envelopeFloat{
+    0%,100%{
+        transform:translateY(0);
+    }
+    50%{
+        transform:translateY(-6px);
+    }
+}
+
+.envelopeGlow{
+    position:absolute;
+    inset:-30px;
+
+    border-radius:35px;
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(69,178,255,.22),
+            transparent 68%
+        );
+
+    animation:envelopeGlow 2.5s ease-in-out infinite;
+}
+
+@keyframes envelopeGlow{
+    0%,100%{
+        transform:scale(1);
+        opacity:.8;
+    }
+    50%{
+        transform:scale(1.08);
+        opacity:.4;
+    }
+}
+
+.envelopeBody{
+    position:absolute;
+    inset:0;
+
+    overflow:hidden;
+
+    border:1px solid #5792bd;
+
+    border-radius:0 0 18px 18px;
+
+    background:
+        linear-gradient(145deg,#173f63,#071522 72%);
+
+    box-shadow:
+        inset 0 0 40px rgba(85,191,255,.08);
+}
+
+.envelopeBody::before{
+    content:"";
+
+    position:absolute;
+
+    left:-12%;
+    bottom:0;
+
+    width:75%;
+    height:100%;
+
+    border-top:1px solid rgba(159,220,255,.27);
+
+    transform:skewY(31deg);
+}
+
+.envelopeBody::after{
+    content:"";
+
+    position:absolute;
+
+    right:-12%;
+    bottom:0;
+
+    width:75%;
+    height:100%;
+
+    border-top:1px solid rgba(159,220,255,.27);
+
+    transform:skewY(-31deg);
+}
+
+.flap{
+    position:absolute;
+
+    top:0;
+    left:0;
+
+    width:0;
+    height:0;
+
+    border-left:calc(min(84vw,430px) / 2) solid transparent;
+    border-right:calc(min(84vw,430px) / 2) solid transparent;
+    border-top:calc(min(55vw,275px) * .48) solid #285b82;
+
+    transform-origin:top;
+
+    transition:transform 1s cubic-bezier(.2,.8,.2,1);
+
+    z-index:10;
+}
+
+.envelope.open .flap{
+    transform:rotateX(180deg);
+    z-index:2;
+}
+
+.seal{
+    position:absolute;
+
+    left:50%;
+    top:50%;
+
+    transform:translate(-50%,-50%);
+
+    width:58px;
+    height:58px;
+
+    display:grid;
+    place-items:center;
+
+    border:1px solid #8bd9ff;
+    border-radius:50%;
+
+    background:#061321;
+
+    color:#dff7ff;
+
+    font-size:24px;
+
+    box-shadow:
+        0 0 30px rgba(72,185,255,.4),
+        inset 0 0 15px rgba(95,208,255,.15);
+
+    z-index:20;
+
+    transition:opacity .5s,transform .5s;
+}
+
+.envelope.open .seal{
+    opacity:0;
+
+    transform:
+        translate(-50%,-50%)
+        scale(.2);
+}
+
+.envelopeTitle{
+    position:absolute;
+
+    left:0;
+    right:0;
+
+    bottom:57px;
+
+    padding:0 12px;
+
+    color:#e9f8ff;
+
+    font-size:14px;
+    font-weight:900;
+
+    letter-spacing:1.5px;
+
+    z-index:8;
+}
+
+.envelopeTap{
+    position:absolute;
+
+    left:0;
+    right:0;
+
+    bottom:21px;
+
+    color:#82ceff;
+
+    font-size:10px;
+    letter-spacing:1px;
+
+    z-index:8;
+}
+
+.openHint{
+    margin-top:24px;
+
+    color:#607f9b;
+
+    font-size:11px;
+}
+
+/* =========================================================
+   LETTER
+========================================================= */
+
+#letter{
+    position:fixed;
+
+    left:50%;
+    top:50%;
+
+    width:min(92vw,680px);
+    height:min(78vh,690px);
+
+    padding:30px;
+
+    overflow-y:auto;
+
+    transform:translate(-50%,-42%) scale(.72);
+
+    opacity:0;
+
+    pointer-events:none;
+
+    z-index:10000;
+
+    border:1px solid #72afd8;
+    border-radius:18px;
+
+    background:
+        linear-gradient(
+            rgba(244,251,255,.99),
+            rgba(226,244,253,.99)
+        );
+
+    color:#192d40;
+
+    box-shadow:
+        0 35px 100px rgba(0,0,0,.7),
+        0 0 55px rgba(74,172,237,.2);
+
+    transition:
+        transform 1s cubic-bezier(.2,.8,.2,1),
+        opacity 1s ease;
+}
+
+#letter.show{
+    transform:translate(-50%,-50%) scale(1);
+    opacity:1;
+    pointer-events:auto;
+}
+
+#letter h2{
+    margin:0;
+    text-align:center;
+    color:#175b8e;
+    font-size:21px;
+}
+
+.letterSubtitle{
+    margin:6px 0 23px;
+    text-align:center;
+    color:#66829a;
+    font-size:11px;
+}
+
+.letterText{
+    font-size:14px;
+    line-height:1.75;
+}
+
+.letterText p{
+    margin:0 0 16px;
+}
+
+.letterText strong{
+    color:#123f68;
+}
+
+.signature{
+    margin-top:25px;
+    text-align:right;
+    color:#245b82;
+    font-weight:700;
+}
+
+#unboxButton{
+    width:100%;
+
+    margin-top:25px;
+
+    padding:16px;
+
+    border:1px dashed #579bc8;
+    border-radius:15px;
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(214,242,255,.9),
+            rgba(244,251,255,.9)
+        );
+
+    color:#15557e;
+
+    font-weight:900;
+
+    box-shadow:
+        0 8px 20px rgba(40,123,177,.12);
+
+    transition:
+        transform .25s,
+        box-shadow .25s;
+}
+
+#unboxButton:hover{
+    transform:translateY(-3px);
+
+    box-shadow:
+        0 12px 30px rgba(40,123,177,.2);
+}
+
+#unboxButton:disabled{
+    opacity:.6;
+}
+
+#letterEgg{
+    margin-top:18px;
+    text-align:center;
+    color:#b9d7e9;
+    cursor:pointer;
+    user-select:none;
+
+    transition:
+        transform .3s,
+        color .3s;
+}
+
+#letterEgg:hover{
+    transform:scale(1.5) rotate(90deg);
+    color:#5fcaff;
+}
+
+/* =========================================================
+   GALLERY
+========================================================= */
+
+#gallery{
+    position:fixed;
+    inset:0;
+
+    display:none;
+
+    z-index:20000;
+
+    background:
+        radial-gradient(
+            circle at 50% 40%,
+            #102f4d,
+            #030914 70%,
+            #01040a 100%
+        );
+
+    opacity:0;
+
+    transition:opacity 1s ease;
+}
+
+#gallery.visible{
+    display:block;
+}
+
+#gallery.fadeIn{
+    opacity:1;
+}
+
+.galleryAura{
+    position:absolute;
+    inset:0;
+
+    pointer-events:none;
+
+    background:
+        radial-gradient(
+            circle at 50% 45%,
+            rgba(75,181,240,.18),
+            transparent 40%
+        );
+}
+
+.galleryAura::before{
+    content:"";
+
+    position:absolute;
+
+    left:50%;
+    top:50%;
+
+    width:45vw;
+    height:45vw;
+
+    max-width:600px;
+    max-height:600px;
+
+    transform:translate(-50%,-50%);
+
+    border:1px solid rgba(102,198,255,.15);
+
+    border-radius:50%;
+
+    box-shadow:
+        0 0 80px rgba(52,159,224,.1);
+
+    animation:auraRotate 16s linear infinite;
+}
+
+@keyframes auraRotate{
+    from{
+        transform:translate(-50%,-50%) rotate(0deg);
+    }
+    to{
+        transform:translate(-50%,-50%) rotate(360deg);
+    }
+}
+
+.finalGlow{
+    position:absolute;
+    inset:0;
+    pointer-events:none;
+    opacity:0;
+    transition:opacity 1.5s ease;
+    background:
+        radial-gradient(
+            circle at 50% 45%,
+            rgba(157,221,255,.16),
+            transparent 35%
+        ),
+        radial-gradient(
+            circle at 50% 45%,
+            rgba(50,121,184,.12),
+            transparent 60%
+        );
+}
+
+.galleryContent{
+    position:relative;
+
+    width:100%;
+    height:100%;
+
+    display:flex;
+
+    flex-direction:column;
+
+    align-items:center;
+    justify-content:center;
+
+    padding:45px 15px 25px;
+
+    z-index:2;
+}
+
+.galleryCounter{
+    margin-bottom:12px;
+
+    color:#83d0ff;
+
+    font-size:9px;
+
+    letter-spacing:4px;
+
+    text-transform:uppercase;
+
+    text-shadow:
+        0 0 12px rgba(99,202,255,.5);
+}
+
+#galleryImage{
+    display:block;
+
+    max-width:min(94vw,1100px);
+    max-height:66vh;
+
+    object-fit:contain;
+
+    border-radius:12px;
+
+    border:1px solid rgba(139,213,255,.4);
+
+    box-shadow:
+        0 25px 90px rgba(0,0,0,.7),
+        0 0 40px rgba(70,170,235,.15);
+
+    animation:imageAppear .8s ease;
+
+    transition:
+        filter .8s,
+        box-shadow .8s;
+}
+
+@keyframes imageAppear{
+    from{
+        opacity:0;
+        transform:scale(.94) translateY(18px);
+        filter:blur(7px);
+    }
+    to{
+        opacity:1;
+        transform:scale(1) translateY(0);
+        filter:blur(0);
+    }
+}
+
+#galleryCaption{
+    width:min(90vw,760px);
+
+    min-height:52px;
+
+    margin-top:15px;
+
+    text-align:center;
+
+    color:#ccecff;
+
+    font-size:13px;
+
+    line-height:1.55;
+
+    animation:captionAppear .8s ease;
+}
+
+@keyframes captionAppear{
+    from{
+        opacity:0;
+        transform:translateY(10px);
+    }
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+}
+
+.galleryButtons{
+    display:flex;
+    gap:10px;
+    margin-top:14px;
+}
+
+.galleryButton{
+    padding:10px 18px;
+
+    border-radius:999px;
+
+    border:1px solid #47799f;
+
+    background:rgba(5,17,31,.9);
+
+    color:#d8f3ff;
+
+    transition:
+        transform .2s,
+        box-shadow .2s;
+}
+
+.galleryButton:hover{
+    transform:translateY(-2px);
+    box-shadow:0 0 18px rgba(87,190,255,.25);
+}
+
+.galleryButton.main{
+    border:0;
+
+    background:
+        linear-gradient(
+            135deg,
+            #79d1ff,
+            #3e78ae
+        );
+
+    color:#03101c;
+
+    font-weight:900;
+}
+
+.galleryButton:disabled{
+    opacity:.5;
+}
+
+#finalMessage{
+    position:absolute;
+
+    bottom:18px;
+    left:50%;
+
+    transform:translateX(-50%);
+
+    padding:9px 17px;
+
+    white-space:nowrap;
+
+    border:1px solid rgba(127,205,255,.3);
+
+    border-radius:999px;
+
+    background:rgba(2,8,16,.78);
+
+    color:#dff5ff;
+
+    font-size:11px;
+
+    opacity:0;
+
+    transition:opacity 1s;
+
+    z-index:5;
+}
+
+#finalMessage.show{
+    opacity:1;
+}
+
+/* =========================================================
+   FINAL CAPITANO MODE
+========================================================= */
+
+#gallery.finalMode{
+    background:
+        radial-gradient(
+            circle at 50% 42%,
+            #102d4c,
+            #030913 58%,
+            #010307 100%
+        );
+}
+
+#gallery.finalMode .galleryAura{
+    background:
+        radial-gradient(
+            circle at 50% 45%,
+            rgba(53,120,181,.2),
+            transparent 48%
+        );
+}
+
+#gallery.finalMode .finalGlow{
+    opacity:1;
+}
+
+#gallery.finalMode #galleryImage{
+    box-shadow:
+        0 25px 100px rgba(0,0,0,.9),
+        0 0 70px rgba(61,146,215,.25);
+}
+
+/* =========================================================
+   TOAST
+========================================================= */
+
+#toast{
+    position:fixed;
+
+    left:50%;
+    bottom:25px;
+
+    transform:translate(-50%,35px);
+
+    opacity:0;
+
+    z-index:100001;
+
+    padding:12px 20px;
+
+    border:1px solid rgba(125,204,255,.4);
+    border-radius:999px;
+
+    background:rgba(3,12,24,.95);
+
+    color:#dff6ff;
+
+    font-size:12px;
+
+    transition:.4s;
+
+    pointer-events:none;
+}
+
+#toast.show{
+    opacity:1;
+    transform:translate(-50%,0);
+}
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media(max-width:600px){
+
+    #letter{
+        width:92vw;
+        height:76vh;
+        padding:22px;
+    }
+
+    .letterText{
+        font-size:13px;
+    }
+
+    #galleryImage{
+        max-height:58vh;
+        max-width:94vw;
+    }
+
+    #galleryCaption{
+        font-size:12px;
+    }
+
+    .galleryButton{
+        padding:9px 13px;
+        font-size:11px;
+    }
+
+    .envelopeTitle{
+        font-size:12px;
+    }
+
+    .sigillum{
+        width:130px;
+        height:130px;
+    }
+}
+
+</style>
+</head>
+
+<body>
+
+<div id="particles"></div>
+
+<!-- PASSWORD -->
+
+<div id="lockScreen">
+
+    <div class="lockCard">
+
+        <div class="lockSymbol">
+            ✦
+        </div>
+
+        <h1>
+            A Little Surprise
+        </h1>
+
+        <p>
+            This birthday message is only for Diablo. ✨
+        </p>
+
+        <input
+            id="password"
+            type="password"
+            inputmode="numeric"
+            maxlength="4"
+            placeholder="ENTER CODE"
+        >
+
+        <button id="unlockButton">
+            UNLOCK ✦
+        </button>
+
+        <div id="error"></div>
+
+        <p class="lockHint">
+            Hint: it's a date. 🤫
+        </p>
+
+    </div>
+
+</div>
+
+
+<div id="app">
+
+    <button id="infoButton">
+        ✦
+    </button>
+
+    <button id="musicButton">
+        🎵
+    </button>
+
+    <div id="musicLabel">
+        MUSIC READY
+    </div>
+
+
+    <div id="infoPanel">
+
+        <h3>
+            ✦ Birthday Edition
+        </h3>
+
+        <p>💧 Hydro-inspired particles</p>
+        <p>❄️ Capitano-inspired finale</p>
+        <p>✦ Genshin-style animations</p>
+        <p>💎 Birthday memory gallery</p>
+        <p>🎵 One continuous birthday song</p>
+
+    </div>
+
+
+    <audio
+        id="galleryAudio"
+        preload="auto"
+        playsinline
+    >
+        <source
+            src="assets/gallery_song.mp3"
+            type="audio/mpeg"
+        >
+    </audio>
+
+
+    <!-- ENVELOPE -->
+
+    <main id="mainScene">
+
+        <section id="envelopeSection">
+
+            <div class="kicker">
+                A Birthday Surprise For Diablo
+            </div>
+
+            <div
+                class="envelope"
+                id="envelope"
+            >
+
+                <div class="envelopeGlow"></div>
+
+                <div class="envelopeBody"></div>
+
+                <div class="flap"></div>
+
+                <div class="seal">
+                    ✦
+                </div>
+
+                <div class="envelopeTitle">
+                    SOMETHING SPECIAL IS WAITING INSIDE…
+                </div>
+
+                <div class="envelopeTap">
+                    OPEN IT, DIABLO. 💌
+                </div>
+
+            </div>
+
+            <div class="openHint">
+                Tap the envelope when you're ready.
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <!-- LETTER -->
+
+    <article id="letter">
+
+        <h2>
+            💌 Happy Birthday, Dab! 🎂✨
+        </h2>
+
+        <div class="letterSubtitle">
+            A little birthday letter, just for you.
+        </div>
+
+
+        <div class="letterText">
+
+            <p>
+                Dear Dab,
+            </p>
+
+            <p>
+                <strong>
+                    HAPPY BIRTHDAYYY!! 🎉🎂🥳
+                </strong>
+            </p>
+
+            <p>
+                I honestly hope you have the most amazing birthday ever and that this year brings you so many good things, great memories, and countless reasons to smile. I’m really, really glad that I got to meet you through Genshin. Out of all the random people I could’ve met while playing, somehow I ended up meeting you, and I’m genuinely grateful for that. ✨
+            </p>
+
+            <p>
+                You’re honestly such an amazing person and a really great friend. You’re fun to talk to, someone I can always enjoy spending time with, and you’ve made so many moments way more memorable than they probably would’ve been otherwise.
+            </p>
+
+            <p>
+                I hope you know how awesome you are, Dab. You deserve a birthday filled with happiness, laughter, good food, good luck, and obviously <strong>LOTS of Primogems</strong> because we all know those are important. 😭✨ I hope you get everything you’re wishing for, both in-game and in real life, and that the year ahead turns out to be an absolutely amazing one for you.
+            </p>
+
+            <p>
+                Thank you for being such a great friend and for all the fun conversations, random moments, and memories.
+            </p>
+
+            <p>
+                So once again...
+            </p>
+
+            <p>
+                <strong>
+                    HAPPY BIRTHDAY, DAB!! 🎂🎉❤️
+                </strong>
+            </p>
+
+            <p>
+                I hope you have the absolute best day, enjoy every moment of it, and remember that you’re an amazing person who deserves nothing but the best. Have an incredible birthday and an even better year ahead!!
+            </p>
+
+            <p>
+                <strong>
+                    Stay awesome, Dab. 🫂✨
+                </strong>
+            </p>
+
+            <p class="signature">
+                Yours sincerely,<br>
+                <strong>
+                    Akane ✨
+                </strong>
+            </p>
+
+        </div>
+
+
+        <button id="unboxButton">
+            💎 TAP TO UNBOX THE BIRTHDAY SURPRISE 💎
+        </button>
+
+
+        <div id="letterEgg">
+            ✦
+        </div>
+
+    </article>
+
+
+    <!-- GALLERY -->
+
+    <div id="gallery">
+
+        <div class="galleryAura"></div>
+
+        <div class="finalGlow"></div>
+
+        <div class="galleryContent">
+
+            <div
+                class="galleryCounter"
+                id="galleryCounter"
+            >
+                MEMORY 01 / 06
+            </div>
+
+
+            <img
+                id="galleryImage"
+                src=""
+                alt="Birthday memory"
+            >
+
+
+            <div id="galleryCaption"></div>
+
+
+            <div class="galleryButtons">
+
+                <button
+                    class="galleryButton"
+                    id="previousButton"
+                >
+                    ← Previous
+                </button>
+
+                <button
+                    class="galleryButton main"
+                    id="nextButton"
+                >
+                    Next Memory →
+                </button>
+
+            </div>
+
+        </div>
+
+
+        <div id="finalMessage">
+            Happy Birthday, Diablo. 🎂✨ — Akane
+        </div>
+
+    </div>
+
+
+    <div id="toast"></div>
+
+</div>
+
+
+<script>
+
+/* =========================================================
+   ELEMENTS
+========================================================= */
+
+const lockScreen=document.getElementById("lockScreen");
+const password=document.getElementById("password");
+const unlockButton=document.getElementById("unlockButton");
+const error=document.getElementById("error");
+
+const envelope=document.getElementById("envelope");
+const letter=document.getElementById("letter");
+const unboxButton=document.getElementById("unboxButton");
+
+const gallery=document.getElementById("gallery");
+const galleryImage=document.getElementById("galleryImage");
+const galleryCaption=document.getElementById("galleryCaption");
+const galleryCounter=document.getElementById("galleryCounter");
+
+const previousButton=document.getElementById("previousButton");
+const nextButton=document.getElementById("nextButton");
+
+const finalMessage=document.getElementById("finalMessage");
+
+const galleryAudio=document.getElementById("galleryAudio");
+const musicButton=document.getElementById("musicButton");
+const musicLabel=document.getElementById("musicLabel");
+
+const particles=document.getElementById("particles");
+
+const infoButton=document.getElementById("infoButton");
+const infoPanel=document.getElementById("infoPanel");
+
+const letterEgg=document.getElementById("letterEgg");
+const toast=document.getElementById("toast");
+
+
+/* =========================================================
+   STATE
+========================================================= */
+
+let unlocked=false;
+let envelopeOpened=false;
+let galleryStarted=false;
+let currentImage=0;
+
+
+/* =========================================================
+   IMAGE ORDER
+========================================================= */
+
+const memories=[
+
+    {
+        src:"assets/drawing.jpg",
+        caption:"<strong>A SMALL GIFT FROM ME</strong> ✨"
+    },
+
+    {
+        src:"assets/image1.jpg",
+        caption:"Out of all the random people I could have met through Genshin... somehow, I met you. ✨"
+    },
+
+    {
+        src:"assets/image2.jpg",
+        caption:"Some of the best memories are the completely random ones you never planned for. 💙"
+    },
+
+    {
+        src:"assets/image3.jpg",
+        caption:"From random Genshin moments to memories worth keeping. ✦"
+    },
+
+    {
+        src:"assets/image4.jpg",
+        caption:"A little birthday wish from Neuvillette and Capitano. 🎂✨"
+    },
+
+    {
+        src:"assets/image5.jpg",
+        caption:"For Diablo — may your birthday be legendary, and may the year ahead be even better. ✦"
+    }
+
+];
+
+
+/* =========================================================
+   BASIC PARTICLES
+========================================================= */
+
+function createParticles(amount){
+
+    for(let i=0;i<amount;i++){
+
+        const particle=document.createElement("div");
+
+        particle.className="particle";
+
+        particle.style.left=Math.random()*100+"%";
+        particle.style.bottom=(-10-Math.random()*20)+"%";
+
+        particle.style.animationDuration=
+            (5+Math.random()*7)+"s";
+
+        particle.style.animationDelay=
+            Math.random()*1.5+"s";
+
+        const size=2+Math.random()*4;
+
+        particle.style.width=size+"px";
+        particle.style.height=size+"px";
+
+        particles.appendChild(particle);
+
+        setTimeout(()=>{
+            particle.remove();
+        },13000);
+    }
+}
+
+
+/* =========================================================
+   HYDRO DROPS
+========================================================= */
+
+function createHydroDrops(amount){
+
+    for(let i=0;i<amount;i++){
+
+        const drop=document.createElement("div");
+
+        drop.className="hydro-drop";
+
+        drop.style.left=Math.random()*100+"%";
+        drop.style.bottom=(-10-Math.random()*10)+"%";
+
+        drop.style.animationDuration=
+            (4+Math.random()*5)+"s";
+
+        drop.style.animationDelay=
+            Math.random()*2+"s";
+
+        const size=4+Math.random()*6;
+
+        drop.style.width=size+"px";
+        drop.style.height=(size*1.5)+"px";
+
+        document.body.appendChild(drop);
+
+        setTimeout(()=>{
+            drop.remove();
+        },10000);
+    }
+}
+
+
+/* =========================================================
+   MAGIC SIGILS
+========================================================= */
+
+function createSigillum(){
+
+    const sigil=document.createElement("div");
+
+    sigil.className="sigillum";
+
+    sigil.style.left=
+        (50+Math.random()*20-10)+"%";
+
+    sigil.style.top=
+        (50+Math.random()*20-10)+"%";
+
+    sigil.style.transform=
+        "translate(-50%,-50%)";
+
+    document.body.appendChild(sigil);
+
+    setTimeout(()=>{
+        sigil.remove();
+    },18000);
+}
+
+
+/* =========================================================
+   MAGIC STAR BURST
+========================================================= */
+
+function createStarBurst(x,y,amount=16){
+
+    for(let i=0;i<amount;i++){
+
+        const star=document.createElement("div");
+
+        star.className="magicStar";
+        star.textContent=Math.random()>.5?"✦":"✧";
+
+        star.style.left=x+"px";
+        star.style.top=y+"px";
+
+        const angle=Math.random()*Math.PI*2;
+        const distance=40+Math.random()*120;
+
+        star.style.setProperty(
+            "--dx",
+            Math.cos(angle)*distance+"px"
+        );
+
+        star.style.setProperty(
+            "--dy",
+            Math.sin(angle)*distance+"px"
+        );
+
+        document.body.appendChild(star);
+
+        setTimeout(()=>{
+            star.remove();
+        },1300);
+    }
+}
+
+
+/* =========================================================
+   ENERGY LINES
+========================================================= */
+
+function createEnergyLines(amount){
+
+    for(let i=0;i<amount;i++){
+
+        const line=document.createElement("div");
+
+        line.className="energyLine";
+
+        line.style.left=Math.random()*100+"%";
+        line.style.top=(-10-Math.random()*10)+"%";
+
+        line.style.setProperty(
+            "--rot",
+            (-25+Math.random()*50)+"deg"
+        );
+
+        line.style.animationDelay=
+            Math.random()*.8+"s";
+
+        document.body.appendChild(line);
+
+        setTimeout(()=>{
+            line.remove();
+        },2200);
+    }
+}
+
+
+/* =========================================================
+   BURST
+========================================================= */
+
+function createBurst(x=window.innerWidth/2,y=window.innerHeight/2){
+
+    const burst=document.createElement("div");
+
+    burst.className="burst";
+
+    burst.style.left=x+"px";
+    burst.style.top=y+"px";
+
+    for(let i=0;i<30;i++){
+
+        const piece=document.createElement("div");
+
+        piece.className="burstPiece";
+
+        piece.style.setProperty(
+            "--angle",
+            (i*(360/30))+"deg"
+        );
+
+        piece.style.setProperty(
+            "--distance",
+            (70+Math.random()*170)+"px"
+        );
+
+        burst.appendChild(piece);
+    }
+
+    document.body.appendChild(burst);
+
+    setTimeout(()=>{
+        burst.remove();
+    },1200);
+}
+
+
+/* =========================================================
+   FROST
+========================================================= */
+
+function createFrost(amount){
+
+    for(let i=0;i<amount;i++){
+
+        const frost=document.createElement("div");
+
+        frost.className="frost";
+
+        frost.style.left=Math.random()*100+"%";
+
+        frost.style.top=
+            (-10-Math.random()*20)+"%";
+
+        frost.style.animationDuration=
+            (5+Math.random()*6)+"s";
+
+        frost.style.animationDelay=
+            Math.random()*3+"s";
+
+        const size=3+Math.random()*5;
+
+        frost.style.width=size+"px";
+        frost.style.height=size+"px";
+
+        document.body.appendChild(frost);
+
+        setTimeout(()=>{
+            frost.remove();
+        },13000);
+    }
+}
+
+
+/* =========================================================
+   START AMBIENT EFFECTS
+========================================================= */
+
+createParticles(35);
+createHydroDrops(15);
+
+setInterval(()=>{
+    createParticles(5);
+},900);
+
+setInterval(()=>{
+    createHydroDrops(2);
+},1300);
+
+setInterval(()=>{
+    if(!document.hidden){
+        createSigillum();
+    }
+},6500);
+
+
+/* =========================================================
+   CLICK RIPPLE + MAGIC BURST
+========================================================= */
+
+document.addEventListener("click",function(event){
+
+    const ring=document.createElement("div");
+
+    ring.className="hydro-ring";
+
+    ring.style.left=event.clientX+"px";
+    ring.style.top=event.clientY+"px";
+
+    document.body.appendChild(ring);
+
+    setTimeout(()=>{
+        ring.remove();
+    },1000);
+
+
+    if(
+        event.target.closest(".envelope") ||
+        event.target.closest(".galleryButton") ||
+        event.target.closest("#unboxButton")
+    ){
+
+        createStarBurst(
+            event.clientX,
+            event.clientY,
+            10
+        );
+    }
+
+});
+
+
+/* =========================================================
+   TOAST
+========================================================= */
+
+function showToast(message){
+
+    toast.textContent=message;
+
+    toast.classList.add("show");
+
+    setTimeout(()=>{
+        toast.classList.remove("show");
+    },3500);
+}
+
+
+/* =========================================================
+   INFO PANEL
+========================================================= */
+
+infoButton.addEventListener("click",function(){
+
+    infoPanel.classList.toggle("show");
+
+});
+
+
+/* =========================================================
+   PASSWORD
+========================================================= */
+
+function lockShake(){
+
+    const card=document.querySelector(".lockCard");
+
+    card.animate(
+        [
+            {transform:"translateX(-7px)"},
+            {transform:"translateX(7px)"},
+            {transform:"translateX(-5px)"},
+            {transform:"translateX(0)"}
+        ],
+        {duration:350}
+    );
+}
+
+
+function checkPassword(){
+
+    if(password.value!=="1308"){
+
+        error.textContent=
+            "Wrong code. Try again. 🤫";
+
+        password.value="";
+
+        lockShake();
+
+        return;
+    }
+
+    unlocked=true;
+
+    error.textContent="";
+
+    createBurst(
+        window.innerWidth/2,
+        window.innerHeight/2
+    );
+
+    createParticles(50);
+
+    lockScreen.style.opacity="0";
+    lockScreen.style.visibility="hidden";
+
+    setTimeout(()=>{
+        lockScreen.remove();
+    },900);
+}
+
+
+unlockButton.addEventListener(
+    "click",
+    checkPassword
+);
+
+
+password.addEventListener(
+    "keydown",
+    function(event){
+
+        if(event.key==="Enter"){
+            checkPassword();
+        }
+
+    }
+);
+
+
+/* =========================================================
+   ENVELOPE
+========================================================= */
+
+envelope.addEventListener(
+    "click",
+    function(){
+
+        if(!unlocked || envelopeOpened){
+            return;
+        }
+
+        envelopeOpened=true;
+
+        envelope.classList.add("open");
+
+        createParticles(70);
+        createHydroDrops(30);
+        createEnergyLines(15);
+
+        createBurst(
+            window.innerWidth/2,
+            window.innerHeight/2
+        );
+
+        createSigillum();
+
+
+        /* MUSIC STARTS FROM BEGINNING */
+
+        galleryAudio.currentTime=0;
+        galleryAudio.volume=.9;
+
+        const playPromise=
+            galleryAudio.play();
+
+        if(playPromise!==undefined){
+
+            playPromise.then(()=>{
+
+                musicLabel.textContent=
+                    "MUSIC PLAYING";
+
+            }).catch(()=>{
+
+                musicLabel.textContent=
+                    "TAP 🎵 TO PLAY";
+
+                showToast(
+                    "🎵 Tap the music button to start the song."
+                );
+
+            });
+
+        }
+
+
+        setTimeout(()=>{
+
+            letter.classList.add("show");
+
+            createParticles(35);
+
+        },500);
+
+    }
+);
+
+
+/* =========================================================
+   MUSIC BUTTON
+========================================================= */
+
+musicButton.addEventListener(
+    "click",
+    function(){
+
+        if(galleryAudio.paused){
+
+            galleryAudio.play()
+            .then(()=>{
+
+                musicButton.textContent="🎵";
+                musicLabel.textContent="MUSIC PLAYING";
+
+            })
+            .catch(()=>{
+
+                showToast(
+                    "🎵 The audio could not be played."
+                );
+
+            });
+
+        }else{
+
+            galleryAudio.pause();
+
+            musicButton.textContent="🔇";
+            musicLabel.textContent="MUSIC PAUSED";
+
+        }
+
+    }
+);
+
+
+/* =========================================================
+   UNBOX
+========================================================= */
+
+unboxButton.addEventListener(
+    "click",
+    function(){
+
+        if(galleryStarted){
+            return;
+        }
+
+        galleryStarted=true;
+
+        unboxButton.disabled=true;
+
+        unboxButton.textContent=
+            "✦ OPENING THE MEMORIES... ✦";
+
+
+        createParticles(100);
+        createHydroDrops(40);
+        createEnergyLines(25);
+
+        createBurst(
+            window.innerWidth/2,
+            window.innerHeight/2
+        );
+
+
+        if(galleryAudio.paused){
+
+            galleryAudio.play()
+            .catch(()=>{
+
+                musicLabel.textContent=
+                    "TAP 🎵 TO PLAY";
+
+            });
+
+        }
+
+
+        setTimeout(()=>{
+
+            letter.classList.remove("show");
+
+            setTimeout(()=>{
+
+                gallery.classList.add("visible");
+
+                requestAnimationFrame(()=>{
+
+                    gallery.classList.add("fadeIn");
+
+                });
+
+                showMemory(0);
+
+                createParticles(70);
+
+            },600);
+
+        },700);
+
+    }
+);
+
+
+/* =========================================================
+   SHOW MEMORY
+========================================================= */
+
+function showMemory(index){
+
+    currentImage=Math.max(
+        0,
+        Math.min(index,memories.length-1)
+    );
+
+    const memory=memories[currentImage];
+
+    galleryImage.style.animation="none";
+
+    void galleryImage.offsetWidth;
+
+    galleryImage.style.animation=
+        "imageAppear .8s ease";
+
+    galleryImage.src=memory.src;
+
+    galleryCaption.innerHTML=memory.caption;
+
+
+    galleryCounter.textContent=
+        "MEMORY "+
+        String(currentImage+1).padStart(2,"0")+
+        " / "+
+        String(memories.length).padStart(2,"0");
+
+
+    if(currentImage===0){
+
+        previousButton.style.visibility="hidden";
+
+    }else{
+
+        previousButton.style.visibility="visible";
+
+    }
+
+
+    if(currentImage===memories.length-1){
+
+        gallery.classList.add("finalMode");
+
+        finalMessage.classList.add("show");
+
+        nextButton.textContent="FINISH ✦";
+
+        createParticles(100);
+        createHydroDrops(30);
+        createFrost(65);
+
+        createEnergyLines(18);
+
+        createBurst(
+            window.innerWidth/2,
+            window.innerHeight/2
+        );
+
+    }else{
+
+        gallery.classList.remove("finalMode");
+
+        finalMessage.classList.remove("show");
+
+        nextButton.textContent="Next Memory →";
+
+    }
+
+
+    /* Transition burst for each memory */
+
+    setTimeout(()=>{
+
+        const rect=galleryImage.getBoundingClientRect();
+
+        createStarBurst(
+            rect.left+rect.width/2,
+            rect.top+rect.height/2,
+            18
+        );
+
+    },300);
+
+}
+
+
+/* =========================================================
+   PREVIOUS
+========================================================= */
+
+previousButton.addEventListener(
+    "click",
+    function(){
+
+        if(currentImage>0){
+
+            showMemory(currentImage-1);
+
+        }
+
+    }
+);
+
+
+/* =========================================================
+   NEXT
+========================================================= */
+
+nextButton.addEventListener(
+    "click",
+    function(){
+
+        if(currentImage<memories.length-1){
+
+            showMemory(currentImage+1);
+
+        }else{
+
+            finishGallery();
+
+        }
+
+    }
+);
+
+
+/* =========================================================
+   FINAL SCREEN
+========================================================= */
+
+function finishGallery(){
+
+    nextButton.disabled=true;
+
+    previousButton.style.display="none";
+
+    galleryCounter.textContent=
+        "THE END ✦";
+
+    galleryCaption.innerHTML=
+        "<strong>Happy Birthday, Diablo. 🎂✨</strong><br><br>"+
+        "Have the absolute best day and an even better year ahead.";
+
+    createParticles(130);
+    createHydroDrops(40);
+    createFrost(100);
+    createEnergyLines(30);
+
+    createBurst(
+        window.innerWidth/2,
+        window.innerHeight/2
+    );
+
+
+    setTimeout(()=>{
+
+        galleryCaption.innerHTML=
+            "<strong>Stay awesome, Diablo. ✦</strong><br><br>"+
+            "— Akane";
+
+    },4500);
+
+}
+
+
+/* =========================================================
+   EASTER EGG
+========================================================= */
+
+letterEgg.addEventListener(
+    "click",
+    function(){
+
+        showToast(
+            "✦ Hidden blessing found. Happy Birthday, Diablo. 💙"
+        );
+
+        createParticles(45);
+        createHydroDrops(20);
+
+        createBurst(
+            window.innerWidth/2,
+            window.innerHeight/2
+        );
+
+    }
+);
+
+
+/* =========================================================
+   KEYBOARD CONTROLS
+========================================================= */
+
+document.addEventListener(
+    "keydown",
+    function(event){
+
+        if(!galleryStarted){
+            return;
+        }
+
+        if(event.key==="ArrowRight"){
+
+            if(currentImage<memories.length-1){
+
+                showMemory(currentImage+1);
+
+            }
+
+        }
+
+        if(event.key==="ArrowLeft"){
+
+            if(currentImage>0){
+
+                showMemory(currentImage-1);
+
+            }
+
+        }
+
+    }
+);
+
+
+/* =========================================================
+   PRELOAD ALL IMAGES
+========================================================= */
+
+memories.forEach(function(memory){
+
+    const img=new Image();
+
+    img.onload=function(){
+
+        console.log(
+            "Loaded:",
+            memory.src
+        );
+
+    };
+
+    img.onerror=function(){
+
+        console.error(
+            "FAILED TO LOAD:",
+            memory.src
+        );
+
+    };
+
+    img.src=memory.src;
+
+});
+
+
+/* =========================================================
+   IMAGE ERROR
+========================================================= */
+
+galleryImage.addEventListener(
+    "error",
+    function(){
+
+        galleryCaption.innerHTML=
+            "<strong>Image could not be loaded.</strong><br>"+
+            "Check the filename and make sure it is inside the assets folder.";
+
+        console.error(
+            "Image failed:",
+            galleryImage.src
+        );
+
+    }
+);
+
+
+/* =========================================================
+   AUDIO ERROR
+========================================================= */
+
+galleryAudio.addEventListener(
+    "error",
+    function(){
+
+        musicLabel.textContent=
+            "AUDIO ERROR";
+
+        console.error(
+            "gallery_song.mp3 could not be loaded."
+        );
+
+    }
+);
+
+
+galleryAudio.addEventListener(
+    "loadeddata",
+    function(){
+
+        console.log(
+            "gallery_song.mp3 loaded successfully."
+        );
+
+    }
+);
+
+</script>
+
+</body>
+</html>
